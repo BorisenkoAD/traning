@@ -40,7 +40,7 @@ gulp.task('js', function() {
 
 gulp.task('browser-sync', function() {
 	browsersync({
-		proxy: "vkusnoe-ryadom",
+		proxy: "tr",
 		notify: false,
 		// tunnel: true,
 		// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
