@@ -15,8 +15,5 @@ $trainingSet -> userId = $userId;
 
 R::store($trainingSet);
 
-
+header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>
-<script type="text/javascript">
-	setTimeout('history.back()', 500);
-</script>
