@@ -1,5 +1,7 @@
 <?php
-require "getSet.php"?>
+require "getSet.php";
+if (empty($_COOKIE['username'])) {
+    header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
     <!DOCTYPE html>
     <html lang="ru">
 
@@ -44,8 +46,7 @@ require "getSet.php"?>
 
     <body class="text-center">
 
-        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-                <?php if(!empty($_COOKIE['username'])) {?>  
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column"> 
                     <header class="">
                           <nav class="navbar navbar-expand-lg navbar-light">
                               <a class="navbar-brand" href="#">              
@@ -70,8 +71,7 @@ require "getSet.php"?>
                                       </li> 
                                       <li class="nav-item">
                                          <a class="nav-link" href="exit.php" style="color:brown">Exit</a> 
-                                      </li>   
-                                      <?php }?>                                                
+                                      </li>                                                 
                                   </ul>
                               </div>
                           </nav>   
@@ -85,9 +85,9 @@ require "getSet.php"?>
                         <div class="col">
                             <?php echo "$traning->movement"?>:</div>
                         <div class="col">
-                            <?php echo "$traning->weight" ?> кг </div>
+                            <?php echo "$traning->weight"?> кг</div>
                         <div class="col">
-                            <?php echo "$traning->repeat" ?> раз</div>
+                            <?php echo "$traning->repeat"?> раз</div>
                         <div class="col">
                             <?php echo "$traning->date_insert"?>
                         </div>                      
@@ -101,8 +101,6 @@ require "getSet.php"?>
                 </div>
             </footer>
         </div>
-        <?php if(!empty($_COOKIE['username'])) {?>
-        <?php } else {?>
         <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
             <div class="popup__inner">
                 <h1>Авторизация</h1>
@@ -117,7 +115,6 @@ require "getSet.php"?>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
-        <?php }?>
         <script src="js/scripts.min.js"></script>
     </body>
 
