@@ -44,14 +44,15 @@
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
+        <?php if(!empty($_COOKIE['username'])) {?>        
         <h3 class="masthead-brand">Hello, <?php echo $_COOKIE['username'];?></h3>
         <nav class="nav nav-masthead justify-content-center">
-          <?php if(!empty($_COOKIE['username'])) {?>
+          <a class="nav-link active" href="\">Главная</a>
           <a class="nav-link" href="setTraining.html">Добавить тренировку</a>
-          <a class="nav-link" href="#">Просмотреть тренирову</a>
-          <a class="nav-link" href="exit.php" style="color:brown">Выход</a>
+          <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
+          <a class="nav-link" href="exit.php" style="color:brown">Exit</a>
           <?php } else {?>  
-          <a class="nav-link popup-with-form" href="#auth" style="color:brown">Войти</a>
+          <a class="nav-link popup-with-form" href="#auth" style="color:brown">Enter</a>
           <?php }?>
         </nav>
       </div>
