@@ -42,21 +42,37 @@
 
 <body class="text-center">
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-      <div class="inner">
-        <?php if(!empty($_COOKIE['username'])) {?>        
-        <h3 class="masthead-brand">Hello, <?php echo $_COOKIE['username'];?></h3>
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="\">Главная</a>
-          <a class="nav-link" href="setTraining.html">Добавить тренировку</a>
-          <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
-          <a class="nav-link" href="exit.php" style="color:brown">Exit</a>
-          <?php } else {?>  
-          <a class="nav-link popup-with-form" href="#auth" style="color:brown">Enter</a>
-          <?php }?>
-        </nav>
-      </div>
-    </header>
+    <?php if(!empty($_COOKIE['username'])) {?>  
+    <header class="">
+          <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand" href="#">              
+                  
+                  <p class="masthead-brand">Hello,
+                  <?php echo $_COOKIE['username'];?>
+                  </p></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>                   
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="setTraining.html">Добавить тренировку</a>  
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
+                      </li> 
+                      <li class="nav-item">
+                         <a class="nav-link" href="exit.php" style="color:brown">Exit</a> 
+                      </li>   
+                      <?php }?>                                                
+                  </ul>
+              </div>
+          </nav>   
+          </header>
     <main role="main" class="inner cover">
       <h2 class="cover-heading">Тренировочный дневник</h2>
       <p style="text-align: justify">Эта программа создана с целью начать уже хранить все свои тренировки где - то в одном месте. 
@@ -68,8 +84,9 @@
         <strong>END</strong>
       </p>
       <p class="lead">
-        <a href="#" class="btn btn-lg btn-secondary">Начать</a>
+        <a href="#auth" class="btn btn-lg btn-outline-sucses popup-with-form">Заходи</a>
       </p>
+      
     </main>
     <footer class="mastfoot mt-auto">
       <div class="inner">

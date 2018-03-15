@@ -41,38 +41,54 @@
 </head>
 
 <body class="text-center">
-
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
-            <div class="inner">
-                    <?php if(!empty($_COOKIE['username'])) {?>                
-                <h3 class="masthead-brand">Hello, <?php echo $_COOKIE['username'];?></h3>
-                <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link" href="\">Главная</a>
-                    <a class="nav-link active" href="setTraining.html">Добавить тренировку</a>
-                    <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
-                    <a class="nav-link" href="exit.php" style="color:brown">Exit</a>
-                    <?php } else {?>
-                    <a class="nav-link popup-with-form" href="#auth" style="color:brown">Enter</a>
-                    <?php }?>
-                </nav>
-            </div>
-        </header>
+            <?php if(!empty($_COOKIE['username'])) {?>  
+                <header class="">
+                      <nav class="navbar navbar-expand-lg navbar-light">
+                          <a class="navbar-brand" href="#">              
+                              
+                              <p class="masthead-brand">Hello,
+                              <?php echo $_COOKIE['username'];?>
+                              </p></a>
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                              aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                          </button>
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav mr-auto">
+                                  <li class="nav-item active">
+                                      <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>                   
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="setTraining.html">Добавить тренировку</a>  
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
+                                  </li> 
+                                  <li class="nav-item">
+                                     <a class="nav-link" href="exit.php" style="color:brown">Exit</a> 
+                                  </li>   
+                                  <?php }?>                                                
+                              </ul>
+                          </div>
+                      </nav>   
+                      </header>
         <main role="main" class="inner cover">
             <h1 class="cover-heading">Выбери упражение</h1>
-            <p class="lead">Эта строка нужна для выдержки ширины блока навигации. почему так я хз.</p>
+            <p>Выбирай упражнение, данные по которому хочешь сохранить в дневнике. Сохранять ли разминочные подходы решать только
+                тебе.</p>
             <?php if(!empty($_COOKIE['username'])) {?>
             <p class="lead">
-                <a href="#press_bench" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Жим лежа</a>
+                <a href="#bench_press" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Жим лежа</a>
             </p>
             <p class="lead">
-                <a href="#squard" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Присед</a>
+                <a href="#squats" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Присед</a>
             </p>
             <p class="lead">
-                <a href="#sumo" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Становая</a>
+                <a href="#deadlift" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Становая тяга</a>
             </p>
             <?php } else {?>
-                <button href="#auth" class="btn btn-outline-danger my-2 my-sm-0 popup-with-form" type="submit" style="margin-left: 10px;">Войти</button>              
+            <button href="#auth" class="btn btn-outline-danger my-2 my-sm-0 popup-with-form" type="submit" style="margin-left: 10px;">Войти</button>
             <?php }?>
         </main>
         <footer class="mastfoot mt-auto">
@@ -82,11 +98,12 @@
         </footer>
     </div>
     <?php if(!empty($_COOKIE['username'])) {?>
-    <form id="press_bench" class="mfp-hide white-popup-block"  action="addSet.php" method="POST">
+    <form id="bench_press" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Жим лежа</h1>
         <div class="form-group">
             <label for="InputWeight">Вес штанги</label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги" required>
+            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                required>
             <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
         </div>
         <div class="form-group">
@@ -95,56 +112,58 @@
                 required>
             <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
         </div>
-        <input name="movement" type="hidden" value="1">
+        <input name="movement" type="hidden" value="bench_press">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <form id="squard" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
+    <form id="squats" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Присед</h1>
         <div class="form-group">
             <label for="InputWeight">Вес штанги</label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги" required>
+            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                required>
             <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
         </div>
         <div class="form-group">
             <label for="InputRepeat">Повторения</label>
-            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз пожал"
+            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз присел"
                 required>
             <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
         </div>
-        <input name="movement" type="hidden" value="2">
+        <input name="movement" type="hidden" value="squats">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <form id="sumo" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
+    <form id="deadlift" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Становая тяга</h1>
         <div class="form-group">
             <label for="InputWeight">Вес штанги</label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги" required>
+            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                required>
             <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
         </div>
         <div class="form-group">
             <label for="InputRepeat">Повторения</label>
-            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз пожал"
+            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз потянул"
                 required>
             <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
         </div>
-        <input name="movement" type="hidden" value="3">
+        <input name="movement" type="hidden" value="deadlift">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <?php } else {?>
-        <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
-                <div class="popup__inner">
-                <h1>Авторизация</h1>
-                <div class="form-group">
-                    <label for="InputName">Имя</label>
-                    <input type="text" class="form-control" id="InputName" name="InputName" aria-describedby="nameHelp" placeholder="Enter name">
-                    <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="InputPassword">Пароль</label>
-                    <input type="password" class="form-control" id="InputPassword"  name="InputPassword" placeholder="Password">
-                  </div>
-                  <button type="submit" name="submit" class="btn btn-primary">Submit</button>     
-              </form> 
+    <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
+        <div class="popup__inner">
+            <h1>Авторизация</h1>
+            <div class="form-group">
+                <label for="InputName">Имя</label>
+                <input type="text" class="form-control" id="InputName" name="InputName" aria-describedby="nameHelp" placeholder="Enter name">
+                <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="InputPassword">Пароль</label>
+                <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password">
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    </form>
     <?php }?>
     <script src="js/scripts.min.js"></script>
 </body>
