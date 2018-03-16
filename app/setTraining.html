@@ -79,13 +79,13 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
             <p>Выбирай упражнение, данные по которому хочешь сохранить в дневнике. Сохранять ли разминочные подходы решать только
                 тебе.</p>
             <p class="lead">
-                <a href="#bench_press" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Жим лежа</a>
+                <a href="#bench_press" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим лежа</a>
             </p>
             <p class="lead">
-                <a href="#squats" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Присед</a>
+                <a href="#squats" class="btn btn-lg btn-outline-light btn-block popup-with-form">Присед</a>
             </p>
             <p class="lead">
-                <a href="#deadlift" class="btn btn-lg btn-outline-danger btn-block popup-with-form">Становая тяга</a>
+                <a href="#deadlift" class="btn btn-lg btn-outline-light btn-block popup-with-form">Становая тяга</a>
             </p>
         </main>
         <footer class="mastfoot mt-auto">
@@ -97,52 +97,76 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
     <form id="bench_press" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Жим лежа</h1>
         <div class="form-group">
-            <label for="InputWeight">Вес штанги</label>
+            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
             <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
                 required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
+            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
         </div>
         <div class="form-group">
-            <label for="InputRepeat">Повторения</label>
-            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз пожал"
-                required>
-            <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
+            <div class="form-row">
+                <div class="col">
+                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
+                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
+                </div>
+                <div class="col">
+                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
+                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
+                </div>
+            </div>
         </div>
-        <input name="movement" type="hidden" value="bench_press">
+        <input name="movement" type="hidden" value="жим">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <form id="squats" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Присед</h1>
         <div class="form-group">
-            <label for="InputWeight">Вес штанги</label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
-        </div>
-        <div class="form-group">
-            <label for="InputRepeat">Повторения</label>
-            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз присел"
-                required>
-            <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
-        </div>
-        <input name="movement" type="hidden" value="squats">
+                <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
+                <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                    required>
+                <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
+                        <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз присел" required>
+                        <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
+                    </div>
+                    <div class="col">
+                        <label for="InputApproach">Подходы <span style="color:red">*</span></label>
+                        <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
+                        <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
+                    </div>
+                </div>
+            </div>
+        <input name="movement" type="hidden" value="присед">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <form id="deadlift" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Становая тяга</h1>
         <div class="form-group">
-            <label for="InputWeight">Вес штанги</label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой. Поле обязательное.</small>
-        </div>
-        <div class="form-group">
-            <label for="InputRepeat">Повторения</label>
-            <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="weightHelp" placeholder="сколько раз потянул"
-                required>
-            <small id="repeatHelp" class="form-text">Просто количество повторений. Поле обязательное.</small>
-        </div>
-        <input name="movement" type="hidden" value="deadlift">
+                <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
+                <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                    required>
+                <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
+                        <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз потянул" required>
+                        <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
+                    </div>
+                    <div class="col">
+                        <label for="InputApproach">Подходы <span style="color:red">*</span></label>
+                        <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
+                        <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
+                    </div>
+                </div>
+            </div>
+        <input name="movement" type="hidden" value="тяга">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">

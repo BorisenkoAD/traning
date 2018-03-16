@@ -79,15 +79,13 @@ if (empty($_COOKIE['username'])) {
             <main role="main" class="inner cover">
                 <p>Показывается тренировка на текущую дату. Если сегодня трени нет, то показываются все даты.</p>
                 <h3 class="cover-heading"></h3>
-                <div class="container">
+                <div class="container-fluid">
                             <?php foreach($allTraning_benchPress as $traning){ ?>                    
                     <div class="row">
                         <div class="col">
                             <?php echo "$traning->movement"?>:</div>
                         <div class="col">
-                            <?php echo "$traning->weight"?> кг</div>
-                        <div class="col">
-                            <?php echo "$traning->repeat"?> раз</div>
+                            <?php echo "$traning->weight"?> кг x <?php echo "$traning->repeat"?></div>
                         <div class="col">
                             <?php echo "$traning->date_insert"?>
                         </div>                      
