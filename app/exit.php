@@ -4,5 +4,4 @@ unset($_COOKIE['username']);
 setcookie('user_id', '', -1, '/');
 setcookie('username', '', -1, '/');
 header( "Location: http://" . $_SERVER['HTTP_HOST']);
-//header("Location: ".$_SERVER['SERVER_NAME']);
 ?>
