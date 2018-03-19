@@ -1,5 +1,6 @@
 <?php
 require "conectdb.php";
+$message = "";
 $id = $_COOKIE['user_id'];
 $date_today = date("Y-m-d"); //присвоено 2018-03-16
 
@@ -22,7 +23,6 @@ if (empty($_COOKIE['username'])) {
     <html lang="ru">
 
     <head>
-
         <meta charset="utf-8">
         <base href="/">
 
@@ -101,27 +101,44 @@ if (empty($_COOKIE['username'])) {
                 <h3 class="cover-heading">
                     <a href="#date" class="btn btn-outline-light popup-with-form">Выбор даты</a>
                 </h3>
-                <h4><?php echo $message; ?></h4>
+                <h4>
+                    <?php echo $message; ?>
+                </h4>
                 <div class="container-fluid">
-                    <?php foreach($allTraning_benchPress as $traning){ ?>
-                    <div class="row">
-                        <div class="col">
-                            <?php echo "$traning->movement"?>:</div>
-                        <div class="col">
-                            <?php echo "$traning->weight"?> кг x
-                            <?php echo "$traning->repeat"?> x
-                            <?php echo "$traning->approach"?>
+
+                    <?php 
+                    //  попытка разделить тренировки линией
+                        $currentDate = "";
+                        $prevDate = ""; // date("Y-m-d"); //присвоено 2018-03-15; 
+                        ?>                   
+                        <?php foreach($allTraning_benchPress as $traning){ 
+                            $currentDate = $traning->date_insert; // 03-12 
+                        if ($currentDate == $prevDate) {} else {?>
+                        <hr />
+                        <?php 
+                        $prevDate = $currentDate;
+                        }
+                        $prevDate = $traning->date_insert;  //03-12                                                        
+                        ?>                                            
+                        <div class="row">
+                            <div class="col">
+                                <?php echo "$traning->movement"?>:</div>
+                            <div class="col">
+                                <?php echo "$traning->weight"?> кг x
+                                <?php echo "$traning->repeat"?> x
+                                <?php echo "$traning->approach"?>
+                            </div>
+                            <div class="col">
+                                <?php echo $currentDate?>
+                            </div>                          
+                            <div class="col">
+                                <a href="delSet.php?id=<?php echo " $traning->id"?>">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="col">
-                            <?php echo "$traning->date_insert"?>
-                        </div>
-                        <div class="col">
-                            <a href="delSet.php?id=<?php echo " $traning->id"?>">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <?php }?>
+                        <?php                        
+                        }?>
                 </div>
             </main>
             <footer class="mastfoot mt-auto">
