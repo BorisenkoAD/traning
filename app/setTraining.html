@@ -82,6 +82,12 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
                 <a href="#bench_press" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим лежа</a>
             </p>
             <p class="lead">
+                <a href="#bench_press_average" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим средним хватом</a>
+            </p>
+            <p class="lead">
+                <a href="#bench_press_standing" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим стоя</a>
+            </p>                        
+            <p class="lead">
                 <a href="#squats" class="btn btn-lg btn-outline-light btn-block popup-with-form">Присед</a>
             </p>
             <p class="lead">
@@ -118,7 +124,58 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
         </div>
         <input name="movement" type="hidden" value="жим">
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </form> 
+    <form id="bench_press_average" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
+        <h1>Жим средним хватом</h1>
+        <div class="form-group">
+            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
+            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                required>
+            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
+        </div>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
+                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
+                </div>
+                <div class="col">
+                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
+                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
+                </div>
+            </div>
+        </div>
+        <input name="movement" type="hidden" value="Жим средним хватом">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>     
+    <form id="bench_press_standing" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
+        <h1>Жим стоя</h1>
+        <div class="form-group">
+            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
+            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
+                required>
+            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
+        </div>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
+                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
+                </div>
+                <div class="col">
+                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
+                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
+                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
+                </div>
+            </div>
+        </div>
+        <input name="movement" type="hidden" value="Жим стоя">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>     
+
     <form id="squats" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
         <h1>Присед</h1>
         <div class="form-group">
