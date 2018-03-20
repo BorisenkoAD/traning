@@ -109,35 +109,37 @@ if (empty($_COOKIE['username'])) {
                     <?php 
                     //  попытка разделить тренировки линией
                         $currentDate = "";
-                        $prevDate = ""; // date("Y-m-d"); //присвоено 2018-03-15; 
-                        ?>                   
-                        <?php foreach($allTraning_benchPress as $traning){ 
-                            $currentDate = $traning->date_insert; // 03-12 
-                        if ($currentDate == $prevDate) {} else {?>
-                        <hr />
-                        <?php 
-                        $prevDate = $currentDate;
-                        }
-                        $prevDate = $traning->date_insert;  //03-12                                                        
-                        ?>                                            
-                        <div class="row">
-                            <div class="col">
-                                <?php echo "$traning->movement"?>:</div>
-                            <div class="col">
-                                <?php echo "$traning->weight"?> кг x
-                                <?php echo "$traning->repeat"?> x
-                                <?php echo "$traning->approach"?>
-                            </div>
-                            <div class="col">
-                                <?php echo $currentDate?>
-                            </div>                          
-                            <div class="col">
-                                <a href="delSet.php?id=<?php echo " $traning->id"?>">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </div>
+                        $prevDate = "";
+                         foreach($allTraning_benchPress as $traning){ 
+                                $currentDate = $traning->date_insert; 
+                                if ($currentDate == $prevDate) {} else {?>
+                    <hr />
+                    <?php 
+                                    $prevDate = $currentDate;
+                                }
+                            $prevDate = $traning->date_insert;   
+
+                            $currentDate = strtotime($currentDate); // переводит из строки в дату
+                            $currentDateMonDay = date("d M", $currentDate); // переводит в новый формат
+                            ?>
+                    <div class="row">
+                        <div class="col">
+                            <?php echo "$traning->movement"?>:</div>
+                        <div class="col">
+                            <?php echo "$traning->weight"?> кг x
+                            <?php echo "$traning->repeat"?> x
+                            <?php echo "$traning->approach"?>
                         </div>
-                        <?php                        
+                        <div class="col">
+                            <?php echo $currentDateMonDay?>
+                        </div>
+                        <div class="col">
+                            <a href="delSet.php?id=<?php echo " $traning->id"?>">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <?php                        
                         }?>
                 </div>
             </main>
