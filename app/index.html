@@ -50,28 +50,6 @@
             <?php echo $_COOKIE['username'];?>
           </p>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="setTraining.html">Добавить тренировку</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="exit.php" style="color:brown">Exit</a>
-            </li>
-          </ul>
-        </div>
       </nav>
     </header>
     <?php }?>
@@ -82,16 +60,24 @@
       <p style="text-align: justify">Теперь каждую тренировку можно завести с мобилки! <i class="fas fa-mobile-alt"></i></p>
       <p style="text-align: justify">Пользователь и дата тренировки добавляются автоматом. Нужно только выбрать упражнение, а затем вводить вес и количество повторений.
       </p>
+     
       <p class="lead">
         <?php if(empty($_COOKIE['username'])) {?>  
         <a href="#auth" class="btn btn-lg btn-outline-sucses popup-with-form">Заходи</a>
+        <?php } else { ?>
+      <p class="lead">
+        <a href="setTraining.html" class="btn btn-lg btn-outline-light btn-block">add training</a>
+      </p>
+      <p class="lead">
+          <a href="getTraining.html" class="btn btn-lg btn-outline-light btn-block">view training</a>
+      </p>                    
         <?php }?>
       </p>
 
     </main>
     <footer class=" footer mastfoot mt-auto">
       <div class="inner">
-        <p>Моя тренировка. Все права зареганы.</p>
+        <p>Моя тренировка. Все права зареганы.<?php if(!empty($_COOKIE['username'])) {?> <a class="nav-link" href="exit.php" style="color:brown"> Exit</a></p> <?php }?>
       </div>
     </footer>
   </div>

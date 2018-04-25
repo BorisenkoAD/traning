@@ -45,35 +45,15 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
 
 <body class="text-center">
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column"> 
-                <header class="">
-                      <nav class="navbar navbar-expand-lg navbar-light">
-                          <a class="navbar-brand" href="#">              
-                              
-                              <p class="masthead-brand">Hello,
-                              <?php echo $_COOKIE['username'];?>
-                              </p></a>
-                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                              aria-expanded="false" aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon"></span>
-                          </button>
-                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                              <ul class="navbar-nav mr-auto">
-                                  <li class="nav-item active">
-                                      <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>                   
-                                  </li>
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="setTraining.html">Добавить тренировку</a>  
-                                  </li>
-                                  <li class="nav-item">
-                                      <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
-                                  </li> 
-                                  <li class="nav-item">
-                                     <a class="nav-link" href="exit.php" style="color:brown">Exit</a> 
-                                  </li>                                               
-                              </ul>
-                          </div>
-                      </nav>   
-                      </header>
+        <header class="">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">                                           
+                    <p class="masthead-brand">Hello,
+                        <?php echo $_COOKIE['username'];?>
+                    </p>
+                </a>
+            </nav>   
+        </header>
         <main role="main" class="inner cover">
             <h1 class="cover-heading">Выбери упражение</h1>
             <p>Выбирай упражнение, данные по которому хочешь сохранить в дневнике.</p>
@@ -95,7 +75,7 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
         </main>
         <footer class="mastfoot mt-auto">
             <div class="inner">
-                <p>Моя тренировка. Все права зареганы.</p>
+                <p>Моя тренировка. Все права зареганы.<?php if(!empty($_COOKIE['username'])) {?> <a class="nav-link" href="exit.php" style="color:brown"> Exit</a></p> <?php }?>
             </div>
         </footer>
     </div>

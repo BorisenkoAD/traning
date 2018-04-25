@@ -65,35 +65,12 @@ if (empty($_COOKIE['username'])) {
         <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
             <header class="">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#">
-
+                    <a class="navbar-brand" href="#">                                           
                         <p class="masthead-brand">Hello,
                             <?php echo $_COOKIE['username'];?>
                         </p>
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="setTraining.html">Добавить тренировку</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="getTraining.html">Просмотреть тренирову</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="exit.php" style="color:brown">Exit</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                </nav>   
             </header>
             <main role="main" class="inner cover">
                 <p>Показывается тренировка на текущую дату.
@@ -145,7 +122,7 @@ if (empty($_COOKIE['username'])) {
             </main>
             <footer class="mastfoot mt-auto">
                 <div class="inner">
-                    <p>Моя тренировка. Все права зареганы.</p>
+                    <p>Моя тренировка. Все права зареганы.<?php if(!empty($_COOKIE['username'])) {?> <a class="nav-link" href="exit.php" style="color:brown"> Exit</a></p> <?php }?>
                 </div>
             </footer>
         </div>
