@@ -1,11 +1,11 @@
 <?php
 require "conectdb.php";
+if (empty($_COOKIE['username'])) {
+    header("Location: http://" . $_SERVER['HTTP_HOST']);}
 $message = "";
 $id = $_COOKIE['user_id'];
 $date_today = date("Y-m-d"); //присвоено 2018-03-16
 $movement = "жим";
-if (empty($_COOKIE['username'])) {
-header("Location: http://" . $_SERVER['HTTP_HOST']);}
 $benchPress = R::find('training', "user_id = ? AND date_insert = ? AND  movement = ? order by id", array($id, $date_today, $movement));   
 
 if(empty($benchPress)) {

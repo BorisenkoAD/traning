@@ -1,3 +1,10 @@
+<?php
+require "conectdb.php";
+if (empty($_COOKIE['username'])) {
+    header("Location: http://" . $_SERVER['HTTP_HOST']);}
+$message = "";
+$id = $_COOKIE['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -6,7 +13,7 @@
   <meta charset="utf-8">
   <base href="/">
 
-  <title>Training deary</title>
+  <title>Account page</title>
   <meta name="description" content="">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,33 +57,41 @@
             </div>               
         </div>
         <div class="p-2">   
-          <h2 >Тренировочный дневник</h2>
-          <p style="text-align: justify">Эта программа создана с целью начать уже хранить все свои тренировки где - то в одном месте.
-          </p>
-          <p style="text-align: justify">Теперь каждую тренировку можно завести с мобилки! <i class="fas fa-mobile-alt"></i></p>
-          <p style="text-align: justify">Пользователь и дата тренировки добавляются автоматом. Нужно только выбрать упражнение, а затем вводить вес и количество повторений.
-          </p>
+            <h3>Личный кабинет</h3>
+            <h5>На данный момент он необходим для фиксации ПМ в движениях.</h5>
         </div>
-      <div class="p-2">  
-        <p class="lead">
-          <?php if(empty($_COOKIE['username'])) {?>  
-          <a href="#auth" class="btn btn-lg btn-outline-sucses popup-with-form">Заходи</a>
-          <?php } else { ?>
-        <p class="lead">
-          <a href="setTraining.html" class="btn btn-lg btn-outline-light btn-block">add training</a>
-        </p>
-        <p class="lead">
-            <a href="getTraining.html" class="btn btn-lg btn-outline-light btn-block">view training</a>
-        </p>                    
-          <?php }?>
-        </p>
-      </div>
-      <div class="mt-auto p-2">
-          <?php if(!empty($_COOKIE['username'])) {?>
-              <a class="nav-link" href="exit.php" style="color:brown"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-          <?php }?>
-      </div>
-  </div>
+        <div class="p-2">
+            <form id="pm" action="addpm.php" method="POST">
+                <div class="form-group">
+                    <label for="InputPMsquats">Приседания
+                        <span style="color:red"> *</span>
+                    </label>
+                    <input type="number" class="form-control" id="InputPMsquats" name="InputPMsquats" placeholder="введи вес штанги" required>
+                </div>
+                <div class="form-group">
+                    <label for="InputBenchPress">Жим лежа
+                        <span style="color:red"> *</span>
+                    </label>
+                    <input type="number" class="form-control" id="InputBenchPress" name="InputBenchPress" placeholder="введи вес штанги" required>
+                </div>
+                <div class="form-group">
+                    <label for="InputDeadlift">Становая тяга
+                        <span style="color:red"> *</span>
+                    </label>
+                        <input type="number" class="form-control" id="InputDeadlift" name="InputDeadlift" placeholder="введи вес штанги" required>
+                </div>
+                <input name="movement" type="hidden" value="">
+                <button type="submit" class="btn">SEND      
+                    <i class="far fa-arrow-alt-circle-right"></i>
+                </button>
+            </form>   
+        </div>
+        <div class="mt-auto p-2">
+            <?php if(!empty($_COOKIE['username'])) {?>
+                <a class="nav-link" href="exit.php" style="color:brown"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+            <?php }?>
+        </div>
+    </div>
   <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
     <div class="popup__inner">
       <h1>Авторизация</h1>
@@ -93,5 +108,4 @@
   </form>
   <script src="js/scripts.min.js"></script>
 </body>
-
 </html>
