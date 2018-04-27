@@ -9,7 +9,7 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
     <meta charset="utf-8">
     <base href="/">
 
-    <title>Set training session</title>
+    <title>The choice of exercises</title>
     <meta name="description" content="">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,170 +42,40 @@ header("Location: http://" . $_SERVER['HTTP_HOST']);}?>
     <link rel="stylesheet" href="css/main.min.css">
 
 </head>
-
-<body class="text-center">
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column"> 
-        <header class="">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">                                           
-                    <p class="masthead-brand">Hello,
-                        <?php echo $_COOKIE['username'];?>
-                    </p>
-                </a>
-            </nav>   
-        </header>
-        <main role="main" class="inner cover">
-            <h1 class="cover-heading">Выбери упражение</h1>
-            <p>Выбирай упражнение, данные по которому хочешь сохранить в дневнике.</p>
+<body>
+    <div class="d-flex align-items-center flex-column mb-3" style="height: 700px;">     
+        <div class="p-2">
+            <div class="row">
+                <div class="col"><a href="\" style="color:red"><i class="fas fa-home fa-lg"></i></a> </div>
+                <div class="col"><a href=" " style="color:yellowgreen"><i class="fas fa-unlock-alt fa-lg"></i></a> </div>
+                <div class="col"><a href="#" style="color:goldenrod"><i class="fas fa-eye fa-lg"></i></a> </div>
+            </div>               
+        </div>
+        <div class="p-2">    
+            <h3>The choice of exercises</h3>
+            <h5>Choose the exercise, the data on which you want to save in the diary.</h5>
             <p class="lead">
-                <a href="#bench_press" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим лежа</a>
+                <a href="bench_press.html" class="btn btn-lg btn-outline-light btn-block">Жим лежа</a>
             </p>
             <p class="lead">
-                <a href="#bench_press_average" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим средним хватом</a>
+                <a href="bench_press_average.html" class="btn btn-lg btn-outline-light btn-block ">Жим средним хватом</a>
             </p>
             <p class="lead">
-                <a href="#bench_press_standing" class="btn btn-lg btn-outline-light btn-block popup-with-form">Жим стоя</a>
+                <a href="bench_press_standing.html" class="btn btn-lg btn-outline-light btn-block">Жим стоя</a>
             </p>                        
             <p class="lead">
-                <a href="#squats" class="btn btn-lg btn-outline-light btn-block popup-with-form">Присед</a>
+                <a href="squats.html" class="btn btn-lg btn-outline-light btn-block">Присед</a>
             </p>
             <p class="lead">
-                <a href="#deadlift" class="btn btn-lg btn-outline-light btn-block popup-with-form">Становая тяга</a>
+                <a href="deadlift.html" class="btn btn-lg btn-outline-light btn-block">Становая тяга</a>
             </p>
-        </main>
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p>Моя тренировка. Все права зареганы.<?php if(!empty($_COOKIE['username'])) {?> <a class="nav-link" href="exit.php" style="color:brown"> Exit</a></p> <?php }?>
             </div>
-        </footer>
-    </div>
-    <form id="bench_press" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
-        <h1>Жим лежа</h1>
-        <div class="form-group">
-            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col">
-                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
-                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
-                </div>
-                <div class="col">
-                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
-                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
-                </div>
+            <div class="mt-auto p-2">
+                <?php if(!empty($_COOKIE['username'])) {?>
+                    <a class="nav-link" href="exit.php" style="color:brown"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                <?php }?>
             </div>
-        </div>
-        <input name="movement" type="hidden" value="жим">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form> 
-    <form id="bench_press_average" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
-        <h1>Жим средним хватом</h1>
-        <div class="form-group">
-            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col">
-                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
-                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
-                </div>
-                <div class="col">
-                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
-                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
-                </div>
-            </div>
-        </div>
-        <input name="movement" type="hidden" value="Жим средним хватом">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>     
-    <form id="bench_press_standing" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
-        <h1>Жим стоя</h1>
-        <div class="form-group">
-            <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
-            <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                required>
-            <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
-        </div>
-        <div class="form-group">
-            <div class="form-row">
-                <div class="col">
-                    <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз пожал" required>
-                    <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
-                </div>
-                <div class="col">
-                    <label for="InputApproach">Подходы <span style="color:red">*</span></label>
-                    <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
-                    <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
-                </div>
-            </div>
-        </div>
-        <input name="movement" type="hidden" value="Жим стоя">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>     
-
-    <form id="squats" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
-        <h1>Присед</h1>
-        <div class="form-group">
-                <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
-                <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                    required>
-                <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col">
-                        <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
-                        <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз присел" required>
-                        <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
-                    </div>
-                    <div class="col">
-                        <label for="InputApproach">Подходы <span style="color:red">*</span></label>
-                        <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
-                        <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
-                    </div>
-                </div>
-            </div>
-        <input name="movement" type="hidden" value="присед">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <form id="deadlift" class="mfp-hide white-popup-block" action="addSet.php" method="POST">
-        <h1>Становая тяга</h1>
-        <div class="form-group">
-                <label for="InputWeight">Вес штанги <span style="color:red">*</span></label>
-                <input type="number" class="form-control" id="InputWeight" name="InputWeight" aria-describedby="weightHelp" placeholder="введи вес штанги"
-                    required>
-                <small id="weightHelp" class="form-text">Вес штанги в КГ, без запятой</small>
-            </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col">
-                        <label for="InputRepeat">Повторения <span style="color:red">*</span></label>
-                        <input type="number" class="form-control" id="InputRepeat" name="InputRepeat" aria-describedby="repeatHelp" placeholder="сколько раз потянул" required>
-                        <small id="repeatHelp" class="form-text">Укажи количество повторений</small>    
-                    </div>
-                    <div class="col">
-                        <label for="InputApproach">Подходы <span style="color:red">*</span></label>
-                        <input type="number" class="form-control" id="InputApproach" name="InputApproach" aria-describedby="ApproachHelp" placeholder="сколько подходов" required>   
-                        <small id="ApproachHelp" class="form-text">Укажи количество подходов</small>
-                    </div>
-                </div>
-            </div>
-        <input name="movement" type="hidden" value="тяга">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>    
     <script src="js/scripts.min.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,141 @@
+<?php
+require "conectdb.php";
+$message = "";
+$id = $_COOKIE['user_id'];
+$date_today = date("Y-m-d"); //присвоено 2018-03-16
+$movement = "тяга";
+if (empty($_COOKIE['username'])) {
+header("Location: http://" . $_SERVER['HTTP_HOST']);}
+$benchPress = R::find('training', "user_id = ? AND date_insert = ? AND  movement = ? order by id", array($id, $date_today, $movement));   
+
+if(empty($benchPress)) {
+    $message = "Записи в bd отсутствуют.";
+}
+
+?>
+    <!DOCTYPE html>
+    <html lang="ru">
+
+    <head>
+        <meta charset="utf-8">
+        <base href="/">
+
+        <title>Deadlift - Set training session</title>
+        <meta name="description" content="">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- Template Basic Images Start -->
+        <meta property="og:title" content="мой тренировочный дневник" />
+        <meta property="og:description" content="Эта программа создана с целью начать уже хранить все свои тренировки где - то в одном месте."
+        />
+        <meta property="og:image" content="img/og_image.jpg">
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://77.244.220.168/" />
+
+        <link rel="shortcut icon" href="img/favicon/favicon.png" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png" />
+        <!-- Template Basic Images End -->
+        <!-- Custom Browsers Color Start -->
+        <meta name="theme-color" content="#000">
+        <!-- Custom Browsers Color End -->
+        <link rel="stylesheet" href="css/main.min.css">
+    </head>
+    <body> 
+        <div class="d-flex align-items-center flex-column mb-3" style="height: 700px;">
+            
+            <div class="p-2">
+                <a href="#"><p class="masthead-brand">Hello, <?php echo $_COOKIE['username'];?>! <i class="fas fa-home"> </i></p></a>
+            </div>
+            <div class="p-2">
+                <h3>Deadlift - становая тяга</h3>
+                <form id="bench_press" action="addSet.php" method="POST">
+                    <div class="form-group">
+                        <label for="InputWeight">Вес штанги
+                            <span style="color:red">*</span>
+                        </label>
+                        <input type="number" class="form-control" id="InputWeight" name="InputWeight" placeholder="введи вес штанги" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="InputRepeat">Повторения
+                                    <span style="color:red">*</span>
+                                </label>
+                                <select class="form-control" id="InputRepeat" name="InputRepeat">
+                                    <option selected>Choose...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="InputApproach">Подходы
+                                    <span style="color:red">*</span>
+                                </label>
+                                <select class="form-control" id="InputApproach" name="InputApproach">
+                                    <option selected>Choose...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input name="movement" type="hidden" value="тяга">
+                    <button type="submit" class="btn">SEND
+                        <i class="far fa-arrow-alt-circle-right"></i>
+                    </button>
+                </form>
+            </div>
+                           
+            <div class="p-2">
+                    <h3>Выполненные упражнения</h3>
+                    <p><?php echo $message; ?></p>
+                    <?php foreach($benchPress as $traning){?>
+                    <div class="row">
+                        <div class="col">
+                            <?php echo "$traning->weight"?> кг
+                        </div>
+                        <div class="col">
+                            <?php echo "$traning->repeat"?>
+                        </div>
+                        <div class="col">
+                            % от ПМ
+                        </div>
+                        <div class="col">
+                            <?php echo "$traning->approach"?>
+                        </div>
+                    </div>
+                    <?php }?>
+            </div>          
+            <div class="mt-auto p-2">
+                        <?php if(!empty($_COOKIE['username'])) {?>
+                        <a class="nav-link" href="exit.php" style="color:brown"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                        <?php }?>
+            </div>
+        </div>
+        <script src="js/scripts.min.js"></script>
+    </body>
+    </html>
