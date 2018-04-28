@@ -48,19 +48,21 @@ $id = $_COOKIE['user_id'];
 </head>
 
 <body>
-    <div class="d-flex align-items-center flex-column mb-3" style="height: 700px;">     
+    <div class="d-flex align-items-center flex-column mb-3">     
         <div class="p-2">
-            <div class="d-flex">
-                <div class="p-2"><a href="\" style="color:red"><i class="fas fa-home fa-lg"></i></a> Home</div>
-                <div class="p-2"><a href="account.html" style="color:yellowgreen"><i class="fas fa-unlock-alt fa-lg"></i></a> Acnt</div>
-                <div class="p-2"><a href="getTraining.html" style="color:goldenrod"><i class="fas fa-eye fa-lg"></i></a> View</div>
-            </div>               
+                <div class="d-flex">
+                        <?php if(!empty($_COOKIE['username'])) {?>
+                            <div class="p-2"><a href="\"><i class="fas fa-home fa-lg" style="color:red"></i> Home</a></div>
+                            <div class="p-2"><a href="account.html"><i class="fas fa-unlock-alt fa-lg" style="color:yellowgreen"></i> Acnt</a></div>
+                            <div class="p-2"><a href="getTraining.html"><i class="fas fa-eye fa-lg" style="color:goldenrod"></i> View</a></div>
+                            <div class="p-2"><a href="exit.php"><i class="fas fa-sign-out-alt fa-lg" style="color:brown"></i> Exit</a></div>
+                          <?php }?> 
+                    </div>               
         </div>
         <div class="p-2">   
             <h3>Личный кабинет</h3>
             <h5>На данный момент он необходим для фиксации ПМ в движениях.</h5>
-        </div>
-        <div class="p-2">
+
             <form id="pm" action="addpm.php" method="POST">
                 <div class="form-group">
                     <label for="InputPMsquats">Приседания
@@ -85,11 +87,6 @@ $id = $_COOKIE['user_id'];
                     <i class="far fa-arrow-alt-circle-right"></i>
                 </button>
             </form>   
-        </div>
-        <div class="mt-auto p-2">
-            <?php if(!empty($_COOKIE['username'])) {?>
-                <a class="nav-link" href="exit.php" style="color:brown"><i class="fas fa-sign-out-alt fa-lg"></i></a>
-            <?php }?>
         </div>
     </div>
   <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
