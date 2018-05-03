@@ -10,7 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.8.4",
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.24.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
@@ -28,6 +28,6 @@
     "imagemin-mozjpeg": "^7.0.0",
     "imagemin-pngquant": "^5.1.0",
     "magnific-popup": "^1.1.0",
-    "npm-check-updates": "^2.14.1"
+    "npm-check-updates": "^2.14.2"
   }
 }
