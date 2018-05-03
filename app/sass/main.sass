@@ -7,9 +7,10 @@
 
 ::selection
 	background-color: $accent
-	color: #fff
+	color: #ffffff
 
 body
+
 	position: relative
 	line-height: 1.75
 	font-family: $default-font
@@ -33,33 +34,22 @@ body
 a,
 a:focus,
 a:hover 
-  color: #fff
+  color: #000
 
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus
-  color: #333
+  color: #000
   text-shadow: none //* Prevent inheritance from `body` */
   background-color: #fff
   border: .05rem solid #fff
 
 html,
 body 
-  background-color: #333
-  background: url(../img/background_img.jpg) no-repeat center center fixed
-  background-size: cover
-  background-attachment: fixed
+  background-color: #fff
 
-body
-  display: -ms-flexbox
-  display: -webkit-box
-  display: flex
-  -ms-flex-pack: center
-  -webkit-box-pack: center
-  justify-content: center
-  color: #fff
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5)
-  // box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5)
+
+
 
 .cover-container 
   max-width: 48em
@@ -110,7 +100,7 @@ form
   max-width: 540px;
   margin: 0 auto;
   position: relative;
-  color: #ffffff;
+  color: #000;
 
 form input 
   height: 40px;
@@ -169,6 +159,101 @@ form textarea
   overflow: auto
   resize: none
   width: 100%
-
   
+  body
+  width: 100%
+  height: 100%
+  font: 100%/1.4em 'Calibre Light', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  margin: 0 auto
+  color: #222
+  -webkit-text-size-adjust: none
+  -webkit-font-smoothing: antialiased
+
+.slideout-menu
+  color: #fff
+  position: fixed
+  top: 0
+  bottom: 0
+  width: 256px
+  min-height: 100vh
+  overflow-y: scroll
+  -webkit-overflow-scrolling: touch
+  z-index: 0
+  display: none
+  background-color: #1D1F20
+  /* A background-color is required*/
+
+.slideout-menu-left
+  left: 0
+
+.slideout-menu-right
+  right: 0
+
+.slideout-panel
+  position: relative
+  z-index: 1
+  will-change: transform
+  background-color: #fff
+  /* A background-color is required*/
+  min-height: 100vh
+
+.menu-section-list
+  padding: 0
+  margin: 10px 0
+  list-style: none
+
+.menu-section-title
+  text-transform: uppercase
+  color: #85888d
+  font-weight: 200
+  /*font-size: 13px*/
+  letter-spacing: 1px
+  padding: 0 20px
+  margin: 0
+
+.menu a
+  color: #fff
+
+a
+  text-decoration: none
+  background-color: transparent
+
+.menu-section-list a
+  display: block
+  padding: 10px 20px
+
+.slideout-open
+  overflow: hidden
+  body, .slideout-panel
+    overflow: hidden
+  .slideout-menu
+    display: block
+
+.btn-hamburger
+  border: none
+  position: absolute
+  top: 12px
+  left: 12px
+  outline: none
+  background: url(../img/menu.png) no-repeat left center
+
+.shake
+  -webkit-animation-name: shake
+  animation-name: shake
+  -webkit-animation-duration: 2s
+  animation-duration: 2s
+  -webkit-animation-iteration-count: 4
+  animation-iteration-count: 4
+
+.tooltip
+  font-size: 20px
+  line-height: 19px
+  display: inline-block
+  background: #4B5
+  color: #fff
+  padding: 10px 45px 10px 20px
+  border-radius: 4px
+  position: relative
+  left: 50px
+
 @import "media" // Always at the end

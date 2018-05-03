@@ -27,8 +27,8 @@ gulp.task('js', function() {
 		'app/libs/parallax.js/parallax.min.js',
 	//	'app/libs/bootstrap/js/dist/util.js',
 		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
-
-		'app/js/common.js', // Always at the end
+		'app/libs/slideout.js/dist/slideout.min.js',
+		'app/js/common.js' // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)

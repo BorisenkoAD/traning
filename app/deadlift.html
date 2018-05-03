@@ -50,75 +50,134 @@ if(empty($benchPress)) {
         <!-- Custom Browsers Color End -->
         <link rel="stylesheet" href="css/main.min.css">
     </head>
-    <body> 
-        <div class="d-flex align-items-center flex-column mb-3" style="height: 700px;">
-                <div class="p-2">
-                        <div class="d-flex">
-                                <?php if(!empty($_COOKIE['username'])) {?>
-                                    <div class="p-2"><a href="\"><i class="fas fa-home fa-lg" style="color:red"></i> Home</a></div>
-                                    <div class="p-2"><a href="account.html"><i class="fas fa-unlock-alt fa-lg" style="color:yellowgreen"></i> Acnt</a></div>
-                                    <div class="p-2"><a href="getTraining.html"><i class="fas fa-eye fa-lg" style="color:goldenrod"></i> View</a></div>
-                                    <div class="p-2"><a href="exit.php"><i class="fas fa-sign-out-alt fa-lg" style="color:brown"></i> Exit</a></div>
-                                  <?php }?> 
-                        </div>               
-                    </div>
-            <div class="p-2" style="width: 100%;">
-                <h3>Deadlift</h3>
-                <form id="bench_press" action="addSet.php" method="POST">
-                    <div class="form-group">
-                        <label for="InputWeight">Вес штанги
-                            <span style="color:red">*</span>
-                        </label>
-                        <input type="number" class="form-control" id="InputWeight" name="InputWeight" placeholder="введи вес штанги" required>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="InputRepeat">Повторения
-                                    <span style="color:red">*</span>
-                                </label>
-                                <select class="form-control" id="InputRepeat" name="InputRepeat">
-                                    <option selected>Choose...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label for="InputApproach">Подходы
-                                    <span style="color:red">*</span>
-                                </label>
-                                <select class="form-control" id="InputApproach" name="InputApproach">
-                                    <option selected>Choose...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
+
+    <body>
+        <nav id="menu" class="menu">
+            <section class="menu-section">
+                <h3 class="menu-section-title">Menu</h3>
+                <ul class="menu-section-list">
+                    <?php if(empty($_COOKIE['username'])) { ?>
+                    <li>
+                        <a href="#auth" class="popup-with-form">
+                            <i class="fas fa-home fa-lg" style="color:red"></i> Enter</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+        <?php } else { ?>
+        <li>
+            <a href="\">
+                <i class="fas fa-home fa-lg" style="color:red"></i> Home</a>
+        </li>
+        <li>
+            <a href="account.html">
+                <i class="fas fa-user fa-lg" style="color:yellowgreen"></i> Account</a>
+        </li>
+        <li>
+            <a href="getTraining.html">
+                <i class="fas fa-eye fa-lg" style="color:goldenrod"></i> View training</a>
+        </li>
+        <li>
+            <a href="exit.php">
+                <i class="fas fa-sign-out-alt fa-lg" style="color:brown"></i> Exit</a>
+        </li>
+        </ul>
+        </section>
+
+        <section class="menu-section">
+            <h3 class="menu-section-title">ADD</h3>
+            <ul class="menu-section-list">
+                <li>
+                    <a href="bench_press.html">
+                        <i class="fas fa-user-plus fa-lg" style="color: #82c91e"></i> Жим лежа</a>
+                </li>
+                <li>
+                    <a href="bench_press_average.html">
+                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Жим средним хватом</a>
+                </li>
+                <li>
+                    <a href="bench_press_standing.html">
+                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Жим стоя</a>
+                </li>
+                <li>
+                    <a href="squats.html">
+                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Присед</a>
+                </li>
+                <li>
+                    <a href="deadlift.html">
+                        <i class="fas fa-user-plus fa-lg" style="color:red"></i> Становая тяга</a>
+                </li>
+            </ul>
+        </section>
+        </nav>
+        <?php }?>
+
+        <main id="panel">
+            <header>
+                <button class="btn-hamburger toggle-button">
+                    <span class="tooltip">Открыть меню</span>
+                </button>
+            </header>
+            <div class="d-flex align-items-center flex-column mb-3" style="height: 700px;">
+                <div class="p-2" style="width: 100%;">
+                    <h3 style="padding-left: 52px; padding-top: 9px;">Deadlift</h3>
+                    <form id="bench_press" action="addSet.php" method="POST">
+                        <div class="form-group">
+                            <label for="InputWeight">Вес штанги
+                                <span style="color:red">*</span>
+                            </label>
+                            <input type="number" class="form-control" id="InputWeight" name="InputWeight" placeholder="введи вес штанги" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="InputRepeat">Повторения
+                                        <span style="color:red">*</span>
+                                    </label>
+                                    <select class="form-control" id="InputRepeat" name="InputRepeat">
+                                        <option selected>Choose...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="InputApproach">Подходы
+                                        <span style="color:red">*</span>
+                                    </label>
+                                    <select class="form-control" id="InputApproach" name="InputApproach">
+                                        <option selected>Choose...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <input name="movement" type="hidden" value="тяга">
-                    <button type="submit" class="btn">SEND
-                        <i class="far fa-arrow-alt-circle-right"></i>
-                    </button>
-                </form>
-            </div>
-                           
-            <div class="p-2">
+                        <input name="movement" type="hidden" value="тяга">
+                        <button type="submit" class="btn">SEND
+                            <i class="far fa-arrow-alt-circle-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="p-2">
                     <h3>Выполненные упражнения</h3>
-                    <p><?php echo $message; ?></p>
+                    <p>
+                        <?php echo $message; ?>
+                    </p>
                     <?php foreach($benchPress as $traning){?>
                     <div class="row">
                         <div class="col">
@@ -135,11 +194,9 @@ if(empty($benchPress)) {
                         </div>
                     </div>
                     <?php }?>
-            </div>  
-            <div class="p-2">   
-                    <div class="p-2"><a href="setTraining.html"><i class="fas fa-backward fa-lg" style="color:red"></i> back</a></div>
-            </div>                    
-        </div>
-        <script src="js/scripts.min.js"></script>
+                </div>
+            </div>
+            <script src="js/scripts.min.js"></script>
     </body>
+
     </html>
