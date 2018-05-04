@@ -1,5 +1,5 @@
-var gulp          = require('gulp'),
-		gutil         = require('gulp-util' ),
+var 	gulp          = require('gulp'),
+		gutil         = require('gulp-util'),
 		sass          = require('gulp-sass'),
 		browsersync   = require('browser-sync'),
 		concat        = require('gulp-concat'),
@@ -24,9 +24,9 @@ gulp.task('js', function() {
 		'app/libs/popper.js/dist/umd/popper.min.js',
 	//	'app/libs/popper.js/dist/popper-utils.js',
 		'app/libs/bootstrap/dist/js/bootstrap.min.js',
-		'app/libs/parallax.js/parallax.min.js',
+	//	'app/libs/parallax.js/parallax.min.js',
 	//	'app/libs/bootstrap/js/dist/util.js',
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
+	//	'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/libs/slideout.js/dist/slideout.min.js',
 		'app/js/common.js' // Always at the end
 		])

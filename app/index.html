@@ -49,38 +49,41 @@
       </header>
 
     <div class="d-flex align-items-center flex-column mb-3">   
-        <div class="p-2">
-          <div class="d-flex">  
-            <h3 style="padding-left: 52px; padding-top: 9px;">Дневнич0k!</h3>
-          </div>               
+      <div class="p-2">
+        <div class="d-flex">  
+          <h3 style="padding-left: 52px; padding-top: 9px;">Дневнич0k!</h3>
+        </div>               
       </div>
       <div class="p-2">    
         <p style="text-align: justify">Эта программа создана с целью начать уже хранить все свои тренировки где - то в одном месте.
         </br>
         Теперь каждую тренировку можно завести с мобилки!</br>
         Пользователь и дата тренировки добавляются автоматом. Нужно только выбрать упражнение, а затем вводить вес и количество повторений.
-        
       </div>
-      <div id="button-up">
-          <span>UP</span>
+      <?php if(empty($_COOKIE['username'])) { ?> 
+      <div class="p-2">
+        <form action="login.php" method="POST">
+            <h3>Авторизация</h3>
+            <div class="form-group mb-2">
+              <label for="InputName">Имя</label>
+              <input type="text" class="form-control" id="InputName" name="InputName" placeholder="Enter name">
+            </div>
+            <div class="form-group mb-2">
+              <label for="InputPassword">Пароль</label>
+              <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password">
+            </div>
+            <button type="submit" name="submit" class="btn btn-secondary">SEND
+              <i class="far fa-arrow-alt-circle-right"></i>
+          </button>
+      </form>
       </div>
-</div>
-</main>
-<form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
-    <div class="popup__inner">
-      <h1>Авторизация</h1>
-      <div class="form-group">
-        <label for="InputName">Имя</label>
-        <input type="text" class="form-control" id="InputName" name="InputName" aria-describedby="nameHelp" placeholder="Enter name">
-        <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div class="form-group">
-        <label for="InputPassword">Пароль</label>
-        <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password">
-      </div>
-      <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <?php }?> 
+      <div id="button-up"><span>UP</span></div>      
+    </div>
+  </main>
     <script src="js/scripts.min.js"></script>
-
+  <div id="button-up">
+    <span>UP</span>
+  </div>
   </body>
 </html>

@@ -8,10 +8,11 @@
   "license": "ISC",
   "homepage": "https://github.com/BorisenkoAD/vkusnoe_ryadom",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "font-awesome": "^5.0.6",
+    "bootstrap": "4.1.1",
+    "font-awesome": "5.0.12",
     "holderjs": "holder.js#^2.9.4",
-    "parallax.js": "^1.5.0",
-    "popper.js": "^1.12.9"
+    "parallax.js": "1.5.0",
+    "popper.js": "1.14.3",
+    "slideout.js": "^1.0.1"
   }
 }

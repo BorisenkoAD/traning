@@ -115,10 +115,9 @@ $id = $_COOKIE['user_id'];
                 </button>
             </header>
             <div class="d-flex align-items-center flex-column mb-3">
-                <div class="p-2" style="width: 100%;">
+                <div class="p-2">
                     <h3 style="padding-left: 52px; padding-top: 9px;">Личный кабинет</h3>
                     <h5>На данный момент он необходим для фиксации ПМ в движениях.</h5>
-
                     <form id="pm" action="addpm.php" method="POST">
                         <div class="form-group">
                             <label for="InputPMsquats">Приседания
@@ -139,31 +138,14 @@ $id = $_COOKIE['user_id'];
                             <input type="number" class="form-control" id="InputDeadlift" name="InputDeadlift" placeholder="введи вес штанги" required>
                         </div>
                         <input name="movement" type="hidden" value="">
-                        <button type="submit" class="btn">SEND
+                        <button type="submit" class="btn btn-secondary">SEND
                             <i class="far fa-arrow-alt-circle-right"></i>
                         </button>
                     </form>
-                </div>
-                <div id="button-up">
-                        <span>UP</span>
-                    </div>                
+                </div>  
+                <div id="button-up"><span>UP</span></div>                            
             </div>
         </main>
-        <form id="auth" class="white-popup-block mfp-hide" action="login.php" method="POST">
-            <div class="popup__inner">
-                <h1>Авторизация</h1>
-                <div class="form-group">
-                    <label for="InputName">Имя</label>
-                    <input type="text" class="form-control" id="InputName" name="InputName" aria-describedby="nameHelp" placeholder="Enter name">
-                    <small id="nameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="InputPassword">Пароль</label>
-                    <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password">
-                </div>
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <script src="js/scripts.min.js"></script>
+        <script src="js/scripts.min.js"></script> 
     </body>
-
     </html>

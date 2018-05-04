@@ -11,7 +11,7 @@ if(isset($_POST['submit_date'])){
     $InputDateEnd = substr(htmlspecialchars(trim($_POST['InputDateEnd'])), 0, 25);
     $allTraning_benchPress = R::find('training', "user_id = ? AND date_insert >= ? AND date_insert <= ? order by date_insert DESC, movement", array($id, $InputDateStart, $InputDateEnd));    
     if(empty($allTraning_benchPress)) {
-        $message = "на эти дни тренировок нет!! Смотри все, что есть!!";
+        $message = "На эти дни тренировок нет!! Смотри все, что есть!!";
     }
 } else { $allTraning_benchPress = R::find('training', "user_id = ? AND date_insert = ? order by date_insert DESC, movement", array($id, $date_today));}
 
@@ -97,23 +97,23 @@ if(empty($allTraning_benchPress)) {
             <ul class="menu-section-list">
                 <li>
                     <a href="bench_press.html">
-                        <i class="fas fa-user-plus fa-lg" style="color: #82c91e"></i> Жим лежа</a>
+                        <i class="fas fa-plus fa-lg" style="color: #82c91e"></i> Жим лежа</a>
                 </li>
                 <li>
                     <a href="bench_press_average.html">
-                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Жим средним хватом</a>
+                        <i class="fas fa-plus fa-lg" style="color:#82c91e"></i> Жим средним хватом</a>
                 </li>
                 <li>
                     <a href="bench_press_standing.html">
-                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Жим стоя</a>
+                        <i class="fas fa-plus fa-lg" style="color:#82c91e"></i> Жим стоя</a>
                 </li>
                 <li>
                     <a href="squats.html">
-                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Присед</a>
+                        <i class="fas fa-plus fa-lg" style="color:#82c91e"></i> Присед</a>
                 </li>
                 <li>
                     <a href="deadlift.html">
-                        <i class="fas fa-user-plus fa-lg" style="color:#82c91e"></i> Становая тяга</a>
+                        <i class="fas fa-plus fa-lg" style="color:#82c91e"></i> Становая тяга</a>
                 </li>
             </ul>
         </section>
@@ -122,27 +122,29 @@ if(empty($allTraning_benchPress)) {
         <main id="panel">
             <header>
                 <button class="btn-hamburger toggle-button">
-                    <span class="tooltip">Открыть меню</span>
+                    <span class="tooltip"></span>
                 </button>
             </header>
-            <div class="d-flex align-items-center flex-column mb-3">
+            <div class="d-flex align-items-center flex-column mb-3 p-50">
                 <div class="p-2">
-                    <h3 style="padding-left: 52px; padding-top: 9px;">Просмотр</h3>    
+                    <h3 style="padding-left: 52px; padding-top: 9px;">Просмотр тренировок</h3>    
                         <form class="" method="POST">
                             <div class="form-group mb-2">
-                              <input type="date" class="form-control" id="InputDateStart">
+                              <input type="date" class="form-control" id="InputDateStart" name="InputDateStart">
                             </div>
                             <div class="form-group mb-2">
-                              <input type="date" class="form-control" id="InputDateEnd">
+                              <input type="date" class="form-control" id="InputDateEnd" name="InputDateEnd">
                             </div>
-                            <button type="submit" class="btn mb-2">Confirm</button>
+                            <button type="submit" name="submit_date" class="btn btn-secondary">SEND
+                                <i class="far fa-arrow-alt-circle-right"></i>
+                            </button>                            
                           </form>
-                    <h4>
+                    <h4 style="color:crimson">
                         <?php echo $message; ?>
                     </h4> 
                 </div>
                 <div class="p-2">
-                    <h5>Показывается тренировка на текущую дату. Если сегодня трени нет, то показываются все даты.</h5>
+                    <h5 style="text-align: justify">Показывается тренировка на текущую дату. Если сегодня трени нет, то показываются все даты.</h5>
                     <?php 
                     //  попытка разделить тренировки линией
                     $currentDate = "";
@@ -150,7 +152,7 @@ if(empty($allTraning_benchPress)) {
                     foreach($allTraning_benchPress as $traning){ 
                             $currentDate = $traning->date_insert; 
                             if ($currentDate == $prevDate) {} else {?>
-                    <hr />
+            <p class="text-center"><strong><?php echo "$traning->date_insert"?></strong></p>    
                     <?php 
                             $prevDate = $currentDate;
                         }
@@ -158,42 +160,29 @@ if(empty($allTraning_benchPress)) {
 
                         $currentDate = strtotime($currentDate); // переводит из строки в дату
                         $currentDateMonDay = date("d M", $currentDate); // переводит в новый формат
-                        ?>
-                    <div class="row">
+                        ?>    
+                <div class="row">
                         <div class="col-4">
                             <?php echo "$traning->movement"?>:</div>
-                        <div class="col-4">
-                            <?php echo "$traning->weight"?> кг x
-                            <?php echo "$traning->repeat"?> x
+                        <div class="col-2">
+                            <?php echo "$traning->weight"?>
+                        </div>
+                        <div class="col-2">
+                            <?php echo "$traning->repeat"?>
+                        </div>
+                        <div class="col-2">
                             <?php echo "$traning->approach"?>
                         </div>
-                        <div class="col-3">
-                            <?php echo $currentDateMonDay?>
-                        </div>
-                        <div class="col-1">
+                        <div class="col-2">
                             <a href="delSet.php?id=<?php echo " $traning->id"?>"><i class="far fa-trash-alt"></i></a>
                         </div>
-                    </div>
-                    <?php }?>
                 </div>
-                <div id="button-up">
-                    <span>UP</span>
-                </div>
+                <?php }?>
+            </div>
+            <div id="button-up"><span>UP</span></div>
             </div>
         </main>
-        <form id="date" class="white-popup-block mfp-hide" action="" method="POST">
-            <div class="form-row align-items-center">
-                <div class="col">
-                    <input type="date" class="form-control" id="InputDateStart" name="InputDateStart">
-                </div>
-                <div class="col">
-                    <input type="date" class="form-control" id="InputDateEnd" name="InputDateEnd">
-                </div>
-                <div class="col">
-                    <button type="submit" name="submit_date" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
         <script src="js/scripts.min.js"></script>
+                
     </body>
     </html>
